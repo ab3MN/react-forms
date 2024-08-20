@@ -1,0 +1,44 @@
+.cart {
+  opacity: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: green;
+  padding: 1rem;
+  font-size: 2rem;
+  color: aquamarine;
+  font-style: italic;
+  &__visible {
+    opacity: 1;
+  }
+  @media (max-width: 450px) {
+    flex-direction: column;
+    row-gap: 2rem;
+  }
+
+  &:hover {
+    background-color: aquamarine;
+    color: coral;
+  }
+
+  span {
+    font-style: normal;
+  }
+}
+
+.dark {
+  .cart {
+    background-color: aquamarine;
+    color: coral;
+    &:hover {
+      background-color: coral;
+      color: aquamarine;
+      span {
+        color: aquamarine;
+      }
+    }
+    span {
+      color: coral;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.nav {
+  &__list {
+    display: flex;
+    justify-content: center;
+    column-gap: 5rem;
+    font-size: 3rem;
+  }
+  &__link {
+    color: aqua;
+    &.active {
+      color: coral;
+    }
+  }
+}
