@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
-const ControlledFormPage = (): ReactNode => <div>ControlledFormPage</div>;
+import ContrtolledForm from '../../components/ContrtolledForm/ContrtolledForm';
+
+const ControlledFormPage = (): ReactNode => <ContrtolledForm />;
 
 export default ControlledFormPage;

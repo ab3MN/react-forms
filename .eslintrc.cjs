@@ -33,6 +33,15 @@ module.exports = {
   },
   plugins: ['react', 'react-compiler', '@typescript-eslint', 'prettier'],
   rules: {
+    'jsx-a11y/label-has-associated-control': [
+      0,
+      {
+        labelComponents: ['CustomInputLabel'],
+        labelAttributes: ['label'],
+        controlComponents: ['CustomInput'],
+        depth: 3,
+      },
+    ],
     'import/no-extraneous-dependencies': ['off', { devDependencies: ['**/*.test.js', '**/*.spec.js'] }],
     'import/extensions': 'off',
     'import/prefer-default-export': 'off',
