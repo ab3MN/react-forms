@@ -12,11 +12,16 @@ const Header = (): ReactNode => (
     <nav>
       <ul className={styles.nav__list}>
         <li key={0}>
+          <NavLink className={isNavLinkActive} to='/'>
+            HomePage
+          </NavLink>
+        </li>
+        <li key={1}>
           <NavLink className={isNavLinkActive} to='/ControlledForm'>
             ControlledForm
           </NavLink>
         </li>
-        <li key={1}>
+        <li key={2}>
           <NavLink className={isNavLinkActive} to='/UnControlledForm'>
             UnControlledForm
           </NavLink>

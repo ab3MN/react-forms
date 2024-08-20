@@ -42,6 +42,7 @@ module.exports = {
         depth: 3,
       },
     ],
+    '@typescript-eslint/no-misused-promises': 'off',
     'import/no-extraneous-dependencies': ['off', { devDependencies: ['**/*.test.js', '**/*.spec.js'] }],
     'import/extensions': 'off',
     'import/prefer-default-export': 'off',

@@ -21,18 +21,35 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 2rem;
   font-size: 2rem;
+  row-gap: 1rem;
+
   .input__container {
     width: 100%;
     display: flex;
     flex-direction: column;
-    row-gap: 0.5rem;
+    row-gap: 1rem;
+  }
+}
+.form {
+  &__title {
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 2.5rem;
+  }
+  &__error {
+    margin: 1rem;
+    color: red;
   }
 }
 
-.form__title {
-  text-align: center;
-  margin: 2rem 0;
-  font-size: 2.5rem;
+.input {
+  &__label {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.section {
+  max-width: 120rem;
+  margin: 5rem auto;
 }

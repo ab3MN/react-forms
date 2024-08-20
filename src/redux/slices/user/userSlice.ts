@@ -1,19 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { IUserWithConvertImage } from '../../../types/User';
+
 export interface IUserState {
-  characters: { name: string }[];
+  users: IUserWithConvertImage[];
 }
 
 const initialState: IUserState = {
-  characters: [],
+  users: [],
 };
 
 const userSlice = createSlice({
-  name: 'cart',
+  name: 'users',
   initialState,
   reducers: {
-    saveUser: (state, { payload }: PayloadAction<{ name: string }>) => {
-      state.characters.push(payload);
+    saveUser: (state, { payload }: PayloadAction<IUserWithConvertImage>) => {
+      state.users.push(payload);
     },
   },
 });
