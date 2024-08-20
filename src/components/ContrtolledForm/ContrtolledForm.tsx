@@ -7,7 +7,7 @@ const ContrtolledForm = (): ReactNode => {
 
   return (
     <section>
-      <h1>ContrtolledForm</h1>
+      <h2 className='form__title'>ContrtolledForm</h2>
       <form>
         <div className='input__container'>
           <label htmlFor='name'>Name</label> <input id='name' type='text' />
@@ -39,7 +39,7 @@ const ContrtolledForm = (): ReactNode => {
         </div>
         <div className='input__container'>
           <label htmlFor='image'>Upload an image</label>
-          <input type='file' accept='.jpeg,.jpg,.png' id='image' />
+          <input type='file' accept='.jpeg,.jpg,.png,.webp' id='image' />
         </div>
         <div className='input__container'>
           <label htmlFor='country'>Country:</label>{' '}
