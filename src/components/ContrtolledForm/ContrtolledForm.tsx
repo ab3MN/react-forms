@@ -19,10 +19,11 @@ const ContrtolledForm = (): ReactNode => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     reset,
   } = useForm<IUser>({
     resolver: yupResolver(userSchema),
+    mode: 'onBlur',
   });
 
   const onSubmitHandler: SubmitHandler<IUser> = async (data): Promise<void> => {
@@ -97,7 +98,9 @@ const ContrtolledForm = (): ReactNode => {
           </datalist>
           <p className='form__error'>{errors.country?.message}</p>
         </div>
-        <button type='submit'>Submit</button>
+        <button type='submit' disabled={!isValid}>
+          Submit
+        </button>
       </form>
     </section>
   );
