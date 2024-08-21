@@ -74,7 +74,7 @@ const UnContrtolledForm = (): ReactNode => {
 
   return (
     <section>
-      <h2 className='form__title'>ContrtolledForm</h2>
+      <h2 className='form__title'>UnContrtolledForm</h2>
       <form onSubmit={onSubmitHandler}>
         <div className='input__container'>
           <label htmlFor='name'>Name</label> <input id='name' type='text' autoComplete='on' name='name' required />

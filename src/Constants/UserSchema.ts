@@ -7,7 +7,7 @@ const MIN_PASSWORD_LENGTH = 8;
 const MAX_PASSWORD_LENGTH = 32;
 const MAX_FILE_SIZE = 102400;
 
-const nameValidate = (string: string): boolean => /^(?!\s)(?![\s\S]*\s$)[a-zA-Z\s()-]*$/.test(string);
+const nameValidate = (string: string): boolean => /^[A-Z]+[a-zA-Z\s()-]*$/.test(string);
 
 const emailValidate = (email: string): boolean => /^\s*[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}\s*$/.test(email);
 
