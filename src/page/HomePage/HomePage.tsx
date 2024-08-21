@@ -5,6 +5,10 @@ import { useAppSelector } from '../../hooks/useAppSelector';
 const HomePage = (): ReactNode => {
   const users = useAppSelector((state) => state.userReducer.users);
 
+  if (users.length === 0) {
+    return <h1 style={{ fontSize: '2.5rem', textAlign: 'center', marginTop: '5rem' }}>NO USERS</h1>;
+  }
+
   return (
     <section className='section'>
       <ul className='user__list'>
