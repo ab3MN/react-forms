@@ -26,6 +26,8 @@ const isImageValid = (file: unknown): boolean => {
   return false;
 };
 
+const isNan = (number: unknown): null | number => (!Number.isNaN(number) && typeof number === 'number' ? number : null);
+
 const userSchema = yup.object().shape({
   name: yup
     .string()
@@ -37,6 +39,8 @@ const userSchema = yup.object().shape({
     ),
   age: yup
     .number()
+    .transform((value) => isNan(value))
+    .nullable()
     .required('Age is required')
     .positive('Age should be a positive number')
     .integer('Age should be not a negative value'),
