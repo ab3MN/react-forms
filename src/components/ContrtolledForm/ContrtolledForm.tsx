@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -11,10 +11,12 @@ import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { saveUser } from '../../redux/slices/user/userSlice';
 import { IUser } from '../../types/User';
 import { getBase64 } from '../../utils/convertBase64';
+import StrengthPassword from '../StrengthPassword/StrengthPassword';
 
 const ContrtolledForm = (): ReactNode => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const [password, setPassword] = useState('');
 
   const {
     register,
@@ -41,6 +43,8 @@ const ContrtolledForm = (): ReactNode => {
     reset();
   };
 
+  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>): void => setPassword(e.target.value);
+
   return (
     <section>
       <h2 className='form__title'>ContrtolledForm</h2>
@@ -60,7 +64,14 @@ const ContrtolledForm = (): ReactNode => {
         </div>
         <div className='input__container'>
           <label htmlFor='password'>Password</label>
-          <input id='password' type='password' {...register('password')} autoComplete='on' />
+          <input
+            id='password'
+            type='password'
+            {...register('password')}
+            autoComplete='on'
+            onChange={onChangePassword}
+          />
+          {password && <StrengthPassword password={password} />}
           <p className='form__error'>{errors.password?.message}</p>
         </div>
 

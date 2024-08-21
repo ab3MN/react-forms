@@ -1,7 +1,5 @@
 import { ReactNode, useState } from 'react';
 
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { v4 as uuidv4 } from 'uuid';
 import { ValidationError } from 'yup';
@@ -9,9 +7,9 @@ import { ValidationError } from 'yup';
 import { countriesList } from '../../Constants/Country';
 import userSchema from '../../Constants/UserSchema';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { IUserState, saveUser } from '../../redux/slices/user/userSlice';
-import { IUser } from '../../types/User';
+import { saveUser } from '../../redux/slices/user/userSlice';
 import { getBase64 } from '../../utils/convertBase64';
+import StrengthPassword from '../StrengthPassword/StrengthPassword';
 
 interface FormFields {
   name: HTMLInputElement;
@@ -30,7 +28,17 @@ const UnContrtolledForm = (): ReactNode => {
   const dispatch = useAppDispatch();
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [isDisabled, seDisabled] = useState<boolean>(false);
+  const [password, setPassword] = useState('');
+  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>): void => setPassword(e.target.value);
+
+  const validateErrors = (err: ValidationError): void => {
+    const errorsMessages: { [key: string]: string } = {};
+
+    err.inner.forEach(({ path, message }) => {
+      if (path) errorsMessages[path] = message;
+    });
+    setErrors(errorsMessages);
+  };
 
   const onSubmitHandler: React.FormEventHandler<HTMLFormElement & FormFields> = async (e): Promise<void> => {
     e.preventDefault();
@@ -53,25 +61,14 @@ const UnContrtolledForm = (): ReactNode => {
 
       if (isValidate && form.image.files) {
         const imageToBase64 = await getBase64(form.image.files[0]);
-        const user = {
-          ...data,
-          image: imageToBase64,
-          id: uuidv4(),
-        };
+
+        const user = { ...data, image: imageToBase64, id: uuidv4() };
 
         dispatch(saveUser(user));
         navigate('/');
       }
     } catch (err) {
-      if (err instanceof ValidationError) {
-        const errorsMessages: { [key: string]: string } = {};
-
-        err.inner.forEach(({ path, message }) => {
-          if (path) errorsMessages[path] = message;
-        });
-
-        setErrors(errorsMessages);
-      }
+      if (err instanceof ValidationError) validateErrors(err);
     }
   };
 
@@ -93,7 +90,8 @@ const UnContrtolledForm = (): ReactNode => {
         </div>
         <div className='input__container'>
           <label htmlFor='password'>Password</label>
-          <input id='password' type='password' autoComplete='on' name='password' required />{' '}
+          <input id='password' type='password' autoComplete='on' name='password' required onChange={onChangePassword} />
+          {password && <StrengthPassword password={password} />}
           {errors.password && <p className='form__error'>{errors.password}</p>}
         </div>
 
@@ -113,7 +111,7 @@ const UnContrtolledForm = (): ReactNode => {
         <div className='input__container'>
           <label htmlFor='conditions'>
             I accept Terms and Conditions agreement
-            <input id='conditions' type='checkbox' name='conditions' required autoComplete='on' />{' '}
+            <input id='conditions' type='checkbox' name='conditions' required />{' '}
             {errors.conditions && <p className='form__error'>{errors.conditions}</p>}
           </label>
         </div>
@@ -132,9 +130,7 @@ const UnContrtolledForm = (): ReactNode => {
           </datalist>{' '}
           {errors.country && <p className='form__error'>{errors.country}</p>}
         </div>
-        <button type='submit' disabled={isDisabled}>
-          Submit
-        </button>
+        <button type='submit'>Submit</button>
       </form>
     </section>
   );
