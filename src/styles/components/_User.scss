@@ -1,0 +1,38 @@
+.user {
+  border: 0.1rem solid black;
+  padding: 1rem 2rem 2rem;
+  border-radius: 2rem;
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 1rem;
+    column-gap: 2rem;
+    row-gap: 2rem;
+  }
+  &__item {
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+  &__info {
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    span {
+      font-weight: bold;
+      padding-right: 1rem;
+    }
+  }
+  .image__container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

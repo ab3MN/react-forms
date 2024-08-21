@@ -1,0 +1,56 @@
+html {
+  font-style: normal;
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+  font-size: 10px;
+}
+main {
+  min-height: 97vh;
+}
+
+button {
+  display: block;
+  background-color: transparent;
+  border: none;
+}
+
+form {
+  max-width: 40rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2rem;
+  row-gap: 1rem;
+
+  .input__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+}
+.form {
+  &__title {
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 2.5rem;
+  }
+  &__error {
+    margin: 1rem;
+    color: red;
+    height: 3rem;
+  }
+}
+
+.input {
+  &__label {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.section {
+  max-width: 120rem;
+  margin: 5rem auto;
+}
