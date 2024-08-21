@@ -23,7 +23,7 @@ const ContrtolledForm = (): ReactNode => {
     reset,
   } = useForm<IUser>({
     resolver: yupResolver(userSchema),
-    mode: 'onBlur',
+    mode: 'all',
   });
 
   const onSubmitHandler: SubmitHandler<IUser> = async (data): Promise<void> => {
@@ -46,26 +46,27 @@ const ContrtolledForm = (): ReactNode => {
       <h2 className='form__title'>ContrtolledForm</h2>
       <form onSubmit={handleSubmit(onSubmitHandler)}>
         <div className='input__container'>
-          <label htmlFor='name'>Name</label> <input id='name' type='text' {...register('name')} />{' '}
+          <label htmlFor='name'>Name</label> <input id='name' type='text' {...register('name')} autoComplete='on' />{' '}
           <p className='form__error'>{errors.name?.message}</p>
         </div>
         <div className='input__container'>
-          <label htmlFor='age'>Age</label> <input id='age' type='number' {...register('age')} />{' '}
+          <label htmlFor='age'>Age</label> <input id='age' type='number' {...register('age')} autoComplete='on' />{' '}
           <p className='form__error'>{errors.age?.message}</p>
         </div>
         <div className='input__container'>
-          <label htmlFor='email'>Email</label> <input id='email' type='email' {...register('email')} />{' '}
+          <label htmlFor='email'>Email</label>{' '}
+          <input id='email' type='email' {...register('email')} autoComplete='on' />{' '}
           <p className='form__error'>{errors.email?.message}</p>
         </div>
         <div className='input__container'>
           <label htmlFor='password'>Password</label>
-          <input id='password' type='password' {...register('password')} />
+          <input id='password' type='password' {...register('password')} autoComplete='on' />
           <p className='form__error'>{errors.password?.message}</p>
         </div>
 
         <div className='input__container'>
           <label htmlFor='repeatPassword'>Repeat password</label>
-          <input id='repeatPassword' type='password' {...register('repeatPassword')} />{' '}
+          <input id='repeatPassword' type='password' {...register('repeatPassword')} autoComplete='on' />{' '}
           <p className='form__error'>{errors.repeatPassword?.message}</p>
         </div>
         <h3>Gender</h3>
@@ -79,13 +80,13 @@ const ContrtolledForm = (): ReactNode => {
         <div className='input__container'>
           <label htmlFor='conditions'>
             I accept Terms and Conditions agreement
-            <input id='conditions' type='checkbox' {...register('conditions')} />
+            <input id='conditions' type='checkbox' {...register('conditions')} autoComplete='on' />
             <p className='form__error'>{errors.conditions?.message}</p>
           </label>
         </div>
         <div className='input__container'>
           <label htmlFor='image'>Upload an image</label>
-          <input type='file' accept='.jpeg,.jpg,.png,.webp' id='image' {...register('image')} />
+          <input type='file' accept='.jpeg,.jpg,.png,.webp' id='image' {...register('image')} autoComplete='on' />
           <p className='form__error'>{errors.image?.message}</p>
         </div>
         <div className='input__container'>

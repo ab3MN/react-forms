@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
-const UnControlledFormPage = (): ReactNode => <div>UnControlledFormPage</div>;
+import UnContrtolledForm from '../../components/UnContrtolledForm/UnContrtolledForm';
+
+const UnControlledFormPage = (): ReactNode => <UnContrtolledForm />;
 
 export default UnControlledFormPage;
